@@ -1,0 +1,407 @@
+/* Enhanced Features CSS - Comparison Slider, Batch Processing, etc. */
+
+/* ============================================
+   COMPARISON SLIDER
+   ============================================ */
+
+.comparison-section {
+  margin-top: 32px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.comparison-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: #f8f9fa;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+}
+
+.comparison-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.comparison-layer.before {
+  z-index: 1;
+}
+
+.comparison-layer.after {
+  z-index: 2;
+  clip-path: inset(0 0 0 50%);
+}
+
+.comparison-layer img,
+.comparison-layer svg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.comparison-divider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: var(--primary);
+  z-index: 3;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.comparison-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.comparison-divider::after {
+  content: '⟷';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.comparison-label {
+  position: absolute;
+  top: 16px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.comparison-label.left {
+  left: 16px;
+}
+
+.comparison-label.right {
+  right: 16px;
+}
+
+.action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.quality-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.quality-info i {
+  width: 18px;
+  height: 18px;
+}
+
+.download-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   BATCH PROCESSING
+   ============================================ */
+
+.batch-container {
+  max-width: 1000px;
+}
+
+.batch-upload-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.btn-large {
+  padding: 16px 32px;
+  font-size: 16px;
+}
+
+.batch-hint {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
+
+.batch-file-list {
+  margin: 24px 0;
+  min-height: 200px;
+  max-height: 500px;
+  overflow-y: auto;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.batch-file-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  transition: var(--transition);
+}
+
+.batch-file-item:hover {
+  background: var(--bg-tertiary);
+}
+
+.batch-file-preview {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.batch-file-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.batch-file-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.batch-file-size {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.batch-file-status {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.batch-file-status.pending {
+  background: var(--bg-tertiary);
+  color: var(--text-tertiary);
+}
+
+.batch-file-status.processing {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.batch-file-status.completed {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.batch-file-status.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+.batch-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.batch-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.batch-progress {
+  margin: 24px 0;
+  padding: 20px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.progress-header span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.progress-track {
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .comparison-wrapper {
+    height: 400px;
+  }
+  
+  .action-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .quality-info,
+  .download-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .batch-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .batch-actions {
+    width: 100%;
+  }
+  
+  .batch-actions .btn {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-wrapper {
+    height: 300px;
+  }
+  
+  .comparison-label {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  
+  .download-buttons {
+    flex-direction: column;
+  }
+  
+  .download-buttons .btn {
+    width: 100%;
+  }
+  
+  .batch-file-preview {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.comparison-section,
+.batch-progress {
+  animation: slideIn 0.3s ease;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.btn-success {
+  background: var(--success);
+  color: white;
+}
+
+.btn-success:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}

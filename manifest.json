@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "SVGify - PNG to SVG Converter",
+  "short_name": "SVGify",
+  "version": "1.0.0",
+  "description": "Convert JPG, PNG, BMP to SVG vector with high-quality results.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/banana.png",
+      "48": "icons/banana.png",
+      "128": "icons/banana.png"
+    },
+    "default_title": "SVGify - Convert Image to SVG"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/banana.png",
+    "48": "icons/banana.png",
+    "128": "icons/banana.png"
+  },
+  "author": "SVGify Team",
+  "homepage_url": "https://github.com/yourusername/svgify"
+}
