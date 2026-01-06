@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "SVGify - PNG to SVG Converter",
   "short_name": "SVGify",
-  "version": "1.0.0",
-  "description": "Convert JPG, PNG, BMP to SVG vector with high-quality results.",
+  "version": "2.0.0",
+  "description": "Convert JPG, PNG, BMP to SVG vector with high-quality results using advanced vectorization.",
   "permissions": [
     "storage"
   ],
@@ -24,5 +24,15 @@
     "128": "icons/banana.png"
   },
   "author": "SVGify Team",
-  "homepage_url": "https://github.com/yourusername/svgify"
+  "homepage_url": "https://github.com/yourusername/svgify",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["libs/*.wasm", "libs/*.js"],
+      "matches": ["<all_urls>"],
+      "extension_ids": ["*"]
+    }
+  ]
 }
